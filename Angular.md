@@ -1,52 +1,12 @@
-#### Differences between AngularJs vs. Angular 2 vs. 4 vs. 5 vs. 6
-
-| AngularJs 2010                     | Angular 2 2016                | Angular 4            | Angular 5     | Angular 6
-| -------------                      |:----------------------        | -----------:|--------------:|
-|         | Autocompletion                |             |               |
-| $scope                             | Strong Typing                 | Animation Package            |               |
-| view                               | Supports ES2015,ES6,TypeScript| NgIf and ngFor Improvement              |             |               |
-|                                    | Components based              | Pipes           |               |
-|                                    | DI Decorators                 | HTTP Request Simplified            |               |
-|                                    | Templating                    |             |               |
-|                                    | provides to nested level components                    |             |               |
-|                                    | Ahead of Time compilation (AOT) improves rendering                 |             |               |
-|                                    | Templating                    |             |               |
-|                                    | Components                    |             |               |
-|                                    | DI Decorators                 |             |               |
-|                                    | Templating                    |             |               |
-
-## AngularJs 
-
-> model-view-controller (MVC)
-> $scope
-> view
-
-## Angular v2
-
->
->
->
->
->
-
-## Angular v4
-
->
->
->
->
->
-
 ## Angular v5
 
 > Make AOT the default
 > Type checking in templates
 > Remove *.ngfactory.ts files
 > Tree-Shakeable components
->
 
 ## Angular v6
-
+```
 > Typescript 2.7+ supports
 > ng add @angular/pwa app manifest and service worker
 > ng add @ng-bootstrap/schematics — Add ng-bootstrap 
@@ -55,6 +15,7 @@
 > angular.json
 > creating and building libraries ng generate library <name>
 > services referencing modules
+```
 ```javascript
 import { Injectable } from '@angular/core';
 
@@ -69,7 +30,7 @@ export class MyService {
 >
 
 ## Project structure
-
+```
 src/                         project source code
 |- app/                      app components
 |  |- config/                config (configuration files)
@@ -78,26 +39,30 @@ src/                         project source code
 |  |- app.component.*        app root component (shell)
 |  |- app.module.ts          app root module definition
 |  |- app-routing.module.ts  app routes
-
+```
 
 ## Angular Module Configuration Properties
 
 
-> imports
-
+imports
+```
 This property is used to specify the Angular modules that the application requires. The **BrowserModule, FormsModule, and HttpModule** modules provide core Angular functionality. The ModelModule is the custom feature module that contains the data model for the example application.
+```
 
-> providers 
-
+providers 
+```
 This property is used to specify services for the dependency injection feature. This property is empty in the root module because the only service currently in the Angular application is defined in the model feature module.
+```
 
-> declarations 
-
+declarations 
+```
 This property is used to provide Angular with a list of the **building blocks** used in the application. For the **root module**, this property specifies AppComponent, which is the only building block in the application at the moment.
+```
 
-> bootstrap 
-
+bootstrap 
+```
 This property specifies the **root component for the application**, which will be used to start the application. For the example application, this property is set to AppComponent, which is the only component in the Angular application currently.
+```
 
 **app.module.ts**
 ```javascript
@@ -179,7 +144,7 @@ Dynamic forms
 Template-driven forms
 ```
 
-## state of a form
+## State of form
 
 ```
 {{myform.form.touched}}
