@@ -5,3 +5,40 @@ https://blog.risingstack.com/node-js-interview-questions-and-answers-2017/
 https://www.toptal.com/nodejs/interview-questions
 
 https://www.codementor.io/nihantanu/21-essential-javascript-tech-interview-practice-questions-answers-du107p62z
+
+
+npx @angular/cli@next new sample-project --experimental-ivy --minimal
+
+https://medium.com/@jeroenouw/upgrade-to-angular-7-beta-within-10-minutes-c14fc380edd
+
+https://blog.ninja-squad.com/2018/10/18/what-is-new-angular-7/
+
+ng new ivy-test --experimental-ivy
+
+https://github.com/froala/angular-froala-wysiwyg
+
+https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/angular.html
+
+ "build": "ng build --prod --aot --service-worker",
+
+ ng add @angular/pwa --project ngCascadingddltbl
+
+ng new ngCascadingddltbl --experimental-ivy --minimal --skip-install 
+
+--skip-npm --skip-tests --skip-install=true --routing --dry-run
+
+ng new ngCascadingddltbl --service-worker --experimental-ivy --routing --skip-install --skip-tests
+
+ng
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    // ...
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "preserveWhitespaces": true,
+    // ...
+  }
+}
