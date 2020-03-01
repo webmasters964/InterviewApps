@@ -43,22 +43,22 @@ src/                         project source code
 ## Angular Module Configuration Properties
 
 
-####imports
+#### imports
 ```
 This property is used to specify the Angular modules that the application requires. The **BrowserModule, FormsModule, and HttpModule** modules provide core Angular functionality. The ModelModule is the custom feature module that contains the data model for the example application.
 ```
 
-####providers 
+#### providers 
 ```
 This property is used to specify services for the dependency injection feature. This property is empty in the root module because the only service currently in the Angular application is defined in the model feature module.
 ```
 
-####declarations 
+#### declarations 
 ```
 This property is used to provide Angular with a list of the **building blocks** used in the application. For the **root module**, this property specifies AppComponent, which is the only building block in the application at the moment.
 ```
 
-####bootstrap 
+#### bootstrap 
 ```
 This property specifies the **root component for the application**, which will be used to start the application. For the example application, this property is set to AppComponent, which is the only component in the Angular application currently.
 ```
@@ -100,15 +100,15 @@ export class AppComponent {
 }
 ```
 
-####Selector 
+#### Selector 
 
 This property is used to specify the HTML element that the component will be responsible for managing. For this component, the selector property tells Angular that the component will manage the app-root element
 
-####TemplateUrl
+#### TemplateUrl
 
 This property is used to specify the **component’s template**, which is the **HTML content that will be displayed to the user**
 
-####StyleUrls
+#### StyleUrls
 
 This property is used to specify one or more CSS stylesheets that will be applied to the component’s template content. **Bootstrap CSS**
 
@@ -131,6 +131,27 @@ ngAfterViewInit         : after component’s view(s) are initialized
 ngAfterViewChecked      : after every check of a component’s view(s)
 ngOnDestroy             : just before the directive is destroyed.
 
+```
+
+## Lifecycle Hooks Methods
+
+```
+ngOnChanges()           : Responds when Angular (re)sets data-bound input properties. The method receives a SimpleChanges object of current and previous 
+                          property values. Called  before ngOnInit(), and whenever one or more data-bound input properties changes.
+ngOnInit()              : Initializes the directive/Component after Angular first displays the data-bound properties and sets the directive/Component's input properties.
+                          Called once, after the first ngOnChanges() method.
+ngDoCheck()             : Detects and acts upon changes that Angular can't, or won't, detect on its own. Called during every change detection run, 
+                          immediately after ngOnChanges() and ngOnInit().
+ngAfterContentInit()    : Responds after Angular projects external content into the Component's view/the view that a directive is in. Called once after the first 
+                          ngDoCheck() method.
+ngAfterContentChecked() : Responds after Angular checks the content projected into the directive/Component. Called after the ngAfterContentInit() method and every 
+                          subsequent ngDoCheck() method.
+ngAfterViewInit()       : Responds after Angular initializes the Component's views and child views/the view that a directive is in. Called once after the 
+                          first ngAfterContentChecked() method.
+ngAfterViewChecked()    : Responds after Angular checks the Component's views and child views/the view that a directive is in. Called after the ngAfterViewInit() method
+                           and every subsequent ngAfterContentChecked() method.
+ngOnDestroy()           : Cleans up just before Angular destroys the directive/Component. Unsubscribes Observables and detaches the event.Handlers to avoid 
+                          memory leaks: Called just before Angular destroys the directive/Component.
 ```
 
 ## Form Features
@@ -207,7 +228,7 @@ Template-driven forms
 ## Data binding
 
 
-## Base Service 
+## Base Service with Promise
 ```javascript
 import { Http, Headers } from '@angular/http';
 import { Inject, Injectable } from '@angular/core';
@@ -229,7 +250,6 @@ export abstract class BaseService {
     list.forEach((item, index) => {
       list[index] = this.mapModel(item);
     });
-
     return list;
   }
 
@@ -240,13 +260,10 @@ export abstract class BaseService {
   findById(id: number, populate: Array<string> = null) {
     return new Promise((resolve, reject) => {
       let url = this.config + '/' + this.modelName + '/' + id;
-
       if (populate) {
         url = url + '?populate=' + populate.join(', ');
       }
-
       console.log('URL', url);
-
       this.http.get(url)
         .map(res => res.json())
         .subscribe(res => {
